@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jack James | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="container header">
+    <div>
+      <h1>Jack James</h1>
+      <p class="sub">Computer Science student • Dublin/Maynooth • Software & Data</p>
+      <div class="links">
+        <a class="btn" href="assets/Jack-James-CV.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
+        <a class="btn ghost" href="https://github.com/JackJames-cs" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="mailto:YOUR_EMAIL">Email</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about" class="card">
+      <h2>About</h2>
+      <p>
+        I’m a second-year Computer Science student at Maynooth University 
+        focused on building software in Java and developing strong foundations 
+        in algorithms, data structures, and statistics. I’m especially 
+        interested in data-centric development, APIs, and areas such as machine
+        learning and artificial intelligence, with a focus on transforming raw 
+        data into useful, well-engineered applications.
+      </p>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Projects</h2>
+
+      <div class="grid">
+        <article class="project">
+          <h3>QueueWise (Full-stack)</h3>
+          <p class="meta">Java • SQL • Web</p>
+          <p>Portfolio project: queue management / booking style app with CRUD, validation, and a database.</p>
+          <div class="projlinks">
+            <a href="https://github.com/YOUR_GITHUB/queuewise" target="_blank" rel="noopener">Code</a>
+            <a href="#" target="_blank" rel="noopener">Demo</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <h3>Weather Data Tool (Met Éireann API)</h3>
+          <p class="meta">Java • HTTP • JSON/XML • Charts</p>
+          <p>Pulls forecasts/observations, stores them, and graphs trends (temp/wind/rain) for Irish locations.</p>
+          <div class="projlinks">
+            <a href="#" target="_blank" rel="noopener">Code</a>
+            <a href="#" target="_blank" rel="noopener">Demo</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <h3>Testing Showcase</h3>
+          <p class="meta">JUnit • Test design</p>
+          <p>A small project demonstrating clean unit tests, edge cases, mocks, and CI checks.</p>
+          <div class="projlinks">
+            <a href="#" target="_blank" rel="noopener">Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="education" class="card">
+      <h2>Education</h2>
+      <ul>
+        <li><strong>BSc Computer Science</strong> — Maynooth University (Year 2)</li>
+        <li>Modules: Data & Algorithms, Computer Architecture, Software Testing, Statistics, Databases</li>
+      </ul>
+    </section>
+
+    <section id="skills" class="card">
+      <h2>Skills</h2>
+      <div class="pillrow">
+        <span class="pill">Java</span>
+        <span class="pill">Python</span>
+        <span class="pill">Git/GitHub</span>
+        <span class="pill">SQL</span>
+        <span class="pill">JUnit</span>
+        <span class="pill">APIs (HTTP/JSON)</span>
+        <span class="pill">Linux</span>
+        <span class="pill">HTML/CSS</span>
+      </div>
+      <p class="note">Currently learning: data visualisation, time-series analysis.</p>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>
+        Email: <a href="mailto:YOUR_EMAIL">JackAnthonyJames006@gmail.com</a><br />
+        GitHub: <a href="https://github.com/JackJames-CS" target="_blank" rel="noopener">JackJames-CS</a><br />
+        LinkedIn: <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">YOUR_LINKEDIN</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>© <span id="year"></span> Jack James</small>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
