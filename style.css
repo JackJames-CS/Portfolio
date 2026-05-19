@@ -36,3 +36,26 @@ h2 { margin:0 0 10px; font-size:22px; }
 .skillgroup .pillrow { padding:0 14px 14px; }
 
 .footer { padding:0 0 40px; color:var(--muted); }
+
+/* Sticky section nav */
+html { scroll-behavior:smooth; }
+section[id] { scroll-margin-top:64px; }
+.nav { position:sticky; top:0; z-index:10; background:rgba(11,13,16,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+.navinner { display:flex; gap:6px; flex-wrap:wrap; padding:10px 0; }
+.nav a { padding:6px 10px; border-radius:8px; font-size:14px; font-weight:600; color:var(--muted); }
+.nav a:hover { color:var(--text); background:rgba(255,255,255,0.06); text-decoration:none; }
+
+/* Project card hover lift */
+.project { transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.project:hover { transform:translateY(-3px); box-shadow:0 10px 26px rgba(0,0,0,0.35); border-color:#34415c; }
+
+/* Reveal on scroll (only when JS is active) */
+.js .reveal { opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease; }
+.js .reveal.visible { opacity:1; transform:none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }
+  .js .reveal { opacity:1; transform:none; transition:none; }
+  .project { transition:none; }
+  .project:hover { transform:none; }
+}
