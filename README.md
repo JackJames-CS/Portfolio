@@ -1,40 +1,41 @@
-# Portfolio Website
+# Portfolio — Jack James
 
-A personal portfolio website used to showcase my projects, skills, and education
-as a Computer Science student.
+Personal portfolio site for Jack James, a Computer Science student at Maynooth
+University. It presents my experience, projects, skills, and a link to my CV on a
+single, fast-loading page.
 
-## Overview
-This website serves as a central place to link my CV and highlight projects I am
-working on or have completed. It is designed to be simple, clean, and easy to
-navigate, and can be shared with recruiters or collaborators.
+**Live site:** https://jackjames-cs.github.io/Portfolio/
 
-The site is built with basic web technologies and hosted using GitHub Pages.
+## Highlights
 
-## Features
-- Single-page responsive layout
-- Sections for projects, education, skills, and contact information
-- Direct link to CV (PDF)
-- Hosted publicly via GitHub Pages
+- Experience, including a competitive Microsoft-mentored software engineering project
+- Selected projects with source links
+- Skills grouped into collapsible sections for readability
+- Responsive, dark-themed layout
 
-## Technologies Used
-- HTML
-- CSS
-- GitHub Pages
+## Built with
 
-## How to Run
-This project does not require any setup.
+- HTML and CSS — no frameworks and no build step
+- Hosted on GitHub Pages
 
-You can:
-- Open `index.html` locally in a browser, or
-- View the live site via GitHub Pages
+The site is intentionally lightweight: one static page that loads instantly and
+is straightforward to maintain.
 
-## Planned Improvements
-- Add detailed project descriptions and links
-- Improve styling and responsiveness
-- Add screenshots and demos for projects
-- Update content as new projects are completed
+## Running locally
 
-## What I Learned
-- Structuring a simple personal website
-- Using GitHub Pages for deployment
-- Writing clear, reusable content for a portfolio
+No setup or dependencies required. Either:
+
+- open `index.html` directly in a browser, or
+- serve the folder with `python3 -m http.server`, then visit `localhost:8000`
+
+## Deploying
+
+GitHub Pages serves the repository root, so any commit pushed to `main` is
+published automatically.
+
+## Structure
+
+- `index.html` — all page content
+- `style.css` — all styling (dark theme driven by CSS custom properties)
+- `favicon.svg` — site icon
+- `Jack_James_CV.pdf` — downloadable CV

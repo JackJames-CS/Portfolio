@@ -1,6 +1,7 @@
 :root { --bg:#0b0d10; --card:#121621; --text:#e9eef6; --muted:#b8c0cc; --line:#263044; --btn:#2c6bed; }
 * { box-sizing:border-box; }
-body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--text); }
+body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--text); line-height:1.6; }
+li { margin:6px 0; }
 a { color:#9cc2ff; text-decoration:none; }
 a:hover { text-decoration:underline; }
 .container { width:min(980px, 92vw); margin:0 auto; }
@@ -26,5 +27,12 @@ h2 { margin:0 0 10px; font-size:22px; }
 
 .pillrow { display:flex; flex-wrap:wrap; gap:8px; }
 .pill { border:1px solid var(--line); padding:6px 10px; border-radius:999px; font-size:14px; color:var(--muted); }
+
+.skillgroup { border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,0.02); margin-bottom:8px; }
+.skillgroup summary { padding:11px 14px; cursor:pointer; font-weight:600; list-style:none; }
+.skillgroup summary::-webkit-details-marker { display:none; }
+.skillgroup summary::after { content:"+"; float:right; color:var(--muted); font-weight:700; }
+.skillgroup[open] summary::after { content:"\2212"; }
+.skillgroup .pillrow { padding:0 14px 14px; }
 
 .footer { padding:0 0 40px; color:var(--muted); }

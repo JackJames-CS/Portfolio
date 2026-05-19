@@ -4,6 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Jack James | Portfolio</title>
+  <meta name="description" content="Jack James — Computer Science student at Maynooth University. A portfolio of software and data projects, including a Microsoft-mentored team project." />
+  <meta property="og:title" content="Jack James | Portfolio" />
+  <meta property="og:description" content="Computer Science student at Maynooth University. Software and data projects, including a Microsoft-mentored team project." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jackjames-cs.github.io/Portfolio/" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,7 +20,8 @@
       <p class="sub">Computer Science student • Meath/Maynooth • Software & Data</p>
       <div class="links">
         <a class="btn" href="Jack_James_CV.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
-        <a class="btn ghost" href="https://github.com/JackJames-cs" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="https://github.com/JackJames-CS" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/jack-james-875570316/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn ghost" href="mailto:JackAnthonyJames006@gmail.com">Email</a>
       </div>
     </div>
@@ -23,13 +31,31 @@
     <section id="about" class="card">
       <h2>About</h2>
       <p>
-        I’m a second-year Computer Science student at Maynooth University 
-        focused on building software in Java and developing strong foundations 
-        in algorithms, data structures, and statistics. I’m especially 
-        interested in data-centric development, APIs, and areas such as machine
-        learning and artificial intelligence, with a focus on transforming raw 
-        data into useful, well-engineered applications.
+        I’m a Computer Science student at Maynooth University, entering my third
+        year, focused on building software in Java and developing strong
+        foundations in algorithms, data structures, and statistics. I’m
+        especially interested in data-centric development, APIs, and areas such
+        as machine learning and artificial intelligence, with a focus on
+        transforming raw data into useful, well-engineered applications.
       </p>
+    </section>
+
+    <section id="experience" class="card">
+      <h2>Experience</h2>
+
+      <article class="project">
+        <h3>Microsoft-Mentored Software Engineering Project</h3>
+        <p class="meta">Maynooth University × Microsoft • Feb–May 2026</p>
+        <p>
+          Selected through a competitive application for a Microsoft-mentored
+          project run alongside the CS335 Software Engineering module.
+        </p>
+        <ul>
+          <li>Worked in a six-person team with weekly mentoring from Microsoft engineers and two on-site visits.</li>
+          <li>As project manager, organised the team, set weekly priorities, and led the mentor meetings on our progress and next steps.</li>
+          <li>Owned the database and research work, building the full PostGIS schema and migrations.</li>
+        </ul>
+      </article>
     </section>
 
     <section id="projects" class="card">
@@ -37,12 +63,20 @@
 
       <div class="grid">
         <article class="project">
+          <h3>Placemark (Location Recommender)</h3>
+          <p class="meta">Java • Spring Boot • PostgreSQL/PostGIS • React Native • Azure</p>
+          <p>A Letterboxd-style app for reviewing real-world places like bars, restaurants and cafés, with geo-tagged locations, a friend activity feed and proximity alerts.</p>
+          <div class="projlinks">
+            <a href="https://github.com/joelx1/location-recommender" target="_blank" rel="noopener">Code</a>
+          </div>
+        </article>
+
+        <article class="project">
           <h3>Grades Calculator (Java terminal)</h3>
           <p class="meta">Java</p>
           <p>A terminal-based application that calculates student grades using Java</p>
           <div class="projlinks">
             <a href="https://github.com/JackJames-CS/Grades-Calculator" target="_blank" rel="noopener">Code</a>
-            <a href="https://github.com/JackJames-CS/Grades-Calculator" target="_blank" rel="noopener">Demo</a>
           </div>
         </article>
 
@@ -61,24 +95,62 @@
 
     <section id="education" class="card">
       <h2>Education</h2>
-      <ul>
-        <li><strong>BSc Computer Science</strong> — Maynooth University (Year 2)</li>
-        <li>Modules: Data & Algorithms, Computer Architecture, Software Testing, Statistics, Databases</li>
-      </ul>
+      <p>
+        <strong>BSc Computer Science</strong>, Maynooth University<br />
+        <span class="meta">Entering Year 3 · Expected graduation 2028</span>
+      </p>
+      <p class="meta">Key modules</p>
+      <div class="pillrow">
+        <span class="pill">Algorithms &amp; Data Structures</span>
+        <span class="pill">Databases</span>
+        <span class="pill">Software Engineering</span>
+        <span class="pill">Operating Systems</span>
+        <span class="pill">Web Information Processing</span>
+        <span class="pill">Software Testing</span>
+        <span class="pill">UX &amp; UI Design</span>
+      </div>
     </section>
 
     <section id="skills" class="card">
       <h2>Skills</h2>
-      <div class="pillrow">
-        <span class="pill">Java</span>
-        <span class="pill">Python</span>
-        <span class="pill">Git/GitHub</span>
-        <span class="pill">SQL</span>
-        <span class="pill">JUnit</span>
-        <span class="pill">APIs (HTTP/JSON)</span>
-        <span class="pill">Linux</span>
-        <span class="pill">HTML/CSS</span>
-      </div>
+
+      <details class="skillgroup" open>
+        <summary>Languages</summary>
+        <div class="pillrow">
+          <span class="pill">Java</span>
+          <span class="pill">Python</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">SQL</span>
+        </div>
+      </details>
+
+      <details class="skillgroup">
+        <summary>Backend &amp; Data</summary>
+        <div class="pillrow">
+          <span class="pill">Spring Boot</span>
+          <span class="pill">PostgreSQL/PostGIS</span>
+          <span class="pill">REST APIs (HTTP/JSON)</span>
+        </div>
+      </details>
+
+      <details class="skillgroup">
+        <summary>Frontend</summary>
+        <div class="pillrow">
+          <span class="pill">React Native</span>
+          <span class="pill">HTML/CSS</span>
+        </div>
+      </details>
+
+      <details class="skillgroup">
+        <summary>Tools &amp; Platforms</summary>
+        <div class="pillrow">
+          <span class="pill">Git/GitHub</span>
+          <span class="pill">Azure</span>
+          <span class="pill">JUnit</span>
+          <span class="pill">Linux</span>
+        </div>
+      </details>
+
       <p class="note">Currently learning: data visualisation, time-series analysis.</p>
     </section>
 
