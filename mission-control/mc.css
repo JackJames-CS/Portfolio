@@ -120,22 +120,15 @@ main h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-
 }
 .chip.accent { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
 
-/* Skeleton placeholders. */
+/* Static placeholders — no shimmer, so they read as "blanked out", not "loading". */
 .fig-skel, .row-skel, .line-skel, .input-skel, .mods span, .slider-skel { background: var(--skel); border-radius: 8px; }
 .fig-skel { height: 30px; width: 60%; margin: 4px 0; position: relative; overflow: hidden; }
-.fig-skel::after, .row-skel::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--ink) 6%, transparent), transparent);
-  animation: shimmer 2.2s ease-in-out infinite;
-}
-@keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
 .rows { display: flex; flex-direction: column; gap: 8px; }
 .row-skel { height: 14px; position: relative; overflow: hidden; }
 .row-skel.short { width: 55%; }
 .rows.check .row-skel { margin-left: 24px; }
 .rows.check .row-skel::before { content: ""; position: absolute; left: -24px; top: -1px; width: 15px; height: 15px; border: 1.5px solid var(--ink-3); border-radius: 4px; }
 .rows.check .row-skel { overflow: visible; }
-.rows.check .row-skel::after { display: none; }
 .input-skel { padding: 10px 12px; font-size: 13px; color: var(--ink-3); border: 1px solid var(--edge); }
 .form-skel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .line-skel {
