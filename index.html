@@ -44,12 +44,14 @@
     <section id="about" class="card reveal">
       <h2>About</h2>
       <p>
-        I’m a Computer Science student at Maynooth University, entering my third
-        year, focused on building software in Java and developing strong
+        I’m a third-year Computer Science student at Maynooth University, focused on building software in Java and developing strong
         foundations in algorithms, data structures, and statistics. I’m
         especially interested in data-centric development, APIs, and areas such
         as machine learning and artificial intelligence, with a focus on
         transforming raw data into useful, well-engineered applications.
+      </p>
+      <p>
+        I’m looking for a six-month placement starting January 2027.
       </p>
     </section>
 
@@ -57,16 +59,17 @@
       <h2>Experience</h2>
 
       <article class="project">
-        <h3>Microsoft-Mentored Software Engineering Project</h3>
+        <h3>Database &amp; Research Lead, Placemark</h3>
         <p class="meta">Maynooth University × Microsoft • Feb–May 2026</p>
         <p>
-          Selected through a competitive application for a Microsoft-mentored
-          project run alongside the CS335 Software Engineering module.
+          Selected through a competitive application as one of four student teams
+          mentored by Microsoft engineers, with weekly sprint reviews over a 12-week project.
         </p>
         <ul>
-          <li>Worked in a six-person team with weekly mentoring from Microsoft engineers and two on-site visits.</li>
-          <li>As project manager, organised the team, set weekly priorities, and led the mentor meetings on our progress and next steps.</li>
-          <li>Owned the database and research work, building the full PostGIS schema and migrations.</li>
+          <li>Owned the database: designed the PostgreSQL/PostGIS schema (six tables, versioned migrations) and deployed it to Azure, including the spatial queries behind nearby-place search.</li>
+          <li>Designed the standout feature: push notifications when a user is within 250 m of a place a friend rated 4★ or higher, driven by a single SQL query with a cooldown.</li>
+          <li>Kept the six-person team aligned: ran our team meetings, consolidated a Week 3 split into two backends onto one Spring Boot API, and managed the Azure deployment and Entra credentials.</li>
+          <li>Lead presenter for the final live demo at Microsoft Ireland.</li>
         </ul>
       </article>
     </section>
@@ -75,6 +78,25 @@
       <h2>Projects</h2>
 
       <div class="grid">
+        <article class="project">
+          <h3>WC26 Sweepstakes Dashboard</h3>
+          <p class="meta">React • TypeScript • Vite • Tailwind • GitHub Pages</p>
+          <p>A live wall dashboard for a family World Cup 2026 sweepstakes, run on a Raspberry Pi in kiosk mode: group tables, knockout bracket, golden boot, squads and a live match banner with goal celebrations.</p>
+          <div class="projlinks">
+            <a href="https://github.com/JackJames-CS/wc26-sweepstakes" target="_blank" rel="noopener">Code</a>
+            <a href="https://jackjames-cs.github.io/wc26-sweepstakes/" target="_blank" rel="noopener">Demo</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <h3>Mission Control Dashboard</h3>
+          <p class="meta">React • TypeScript • Supabase • Postgres • Vercel</p>
+          <p>A mobile-first personal dashboard for college, work and money. It imports my Moodle deadlines, two-way syncs work shifts with Google Calendar, projects pay and bills (unit-tested with Vitest), and sends a timed morning briefing via a Supabase edge function.</p>
+          <div class="projlinks">
+            <a href="mission-control/">Demo walkthrough</a>
+          </div>
+        </article>
+
         <article class="project">
           <h3>Placemark (Location Recommender)</h3>
           <p class="meta">Java • Spring Boot • PostgreSQL/PostGIS • React Native • Azure</p>
@@ -110,7 +132,7 @@
       <h2>Education</h2>
       <p>
         <strong>BSc Computer Science &amp; Software Engineering</strong>, Maynooth University<br />
-        <span class="meta">Second year complete · Entering Year 3 · Expected graduation 2028</span>
+        <span class="meta">Currently in Third Year · First Year 80% · Second Year 69% (2.1) · Expected graduation 2028</span>
       </p>
       <p class="meta">Key modules</p>
       <div class="pillrow">
@@ -134,6 +156,7 @@
         <span class="pill">Technology Student of the Year</span>
         <span class="pill">Student of the Year (6th Year)</span>
         <span class="pill">Chess Team Captain</span>
+        <span class="pill">Spirit of TY Award 2022</span>
       </div>
     </section>
 
@@ -156,14 +179,19 @@
         <div class="pillrow">
           <span class="pill">Spring Boot</span>
           <span class="pill">PostgreSQL/PostGIS</span>
+          <span class="pill">Supabase</span>
+          <span class="pill">Node.js</span>
           <span class="pill">REST APIs (HTTP/JSON)</span>
+          <span class="pill">OAuth2 / JWT</span>
         </div>
       </details>
 
       <details class="skillgroup">
         <summary>Frontend</summary>
         <div class="pillrow">
-          <span class="pill">React Native</span>
+          <span class="pill">React</span>
+          <span class="pill">React Native (Expo)</span>
+          <span class="pill">Tailwind CSS</span>
           <span class="pill">HTML/CSS</span>
         </div>
       </details>
@@ -172,8 +200,12 @@
         <summary>Tools &amp; Platforms</summary>
         <div class="pillrow">
           <span class="pill">Git/GitHub</span>
-          <span class="pill">Azure</span>
+          <span class="pill">Azure (App Service, Blob, Entra ID)</span>
+          <span class="pill">Vercel</span>
+          <span class="pill">Maven</span>
           <span class="pill">JUnit</span>
+          <span class="pill">Vitest</span>
+          <span class="pill">Claude Code / AI-assisted dev</span>
           <span class="pill">Linux</span>
         </div>
       </details>

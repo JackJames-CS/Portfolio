@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mission Control | Jack James</title>
+  <meta name="description" content="A data-free walkthrough of Mission Control, my personal dashboard for college, work and money. Each panel explains what it shows and where the data comes from." />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="mc.css" />
+</head>
+<body>
+  <div class="demo-banner">
+    <span><strong>Demo:</strong> this is a mockup with no real data. Each panel says what it shows in the live app and where the data comes from.</span>
+    <a href="../#projects">← Back to portfolio</a>
+  </div>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="kicker brand"><span class="pulse-dot"></span>Mission control <span class="dim">// v2</span></div>
+      <nav id="sidenav"></nav>
+      <button class="theme-btn" id="themeBtn" type="button">Toggle light / dark</button>
+    </aside>
+
+    <main id="main"></main>
+  </div>
+
+  <nav class="tabbar" id="tabbar"></nav>
+
+  <!-- ───────── Pages ───────── -->
+
+  <template id="page-home">
+    <div class="kicker"><span class="pulse-dot"></span>Mission control <span class="dim">// v2</span></div>
+    <h1>Good morning, Jack.</h1>
+    <p class="lede">The home screen answers "what needs me today?" in one glance on my phone.</p>
+    <div class="grid g3">
+      <section class="card glow"><h2 class="card-title">Last paycheck</h2><div class="fig-skel"></div><p class="src">Payslips table · payday = Friday of the following week</p></section>
+      <section class="card"><h2 class="card-title">Expected this week</h2><div class="fig-skel"></div><p class="src">Logged shifts × hourly rate, through a fitted tax model</p></section>
+      <section class="card"><h2 class="card-title">Total, all accounts</h2><div class="fig-skel"></div><p class="src">Sum of account balances in Supabase</p></section>
+    </div>
+    <section class="card">
+      <h2 class="card-title">Focus</h2>
+      <p>A rule-based strip, not AI guesswork: overdue tasks, bills due or overdue, and the next assignment deadline. When nothing qualifies it says <em>"Nothing pressing"</em>. It never invents items.</p>
+      <div class="rows"><div class="row-skel"></div><div class="row-skel"></div><div class="row-skel short"></div></div>
+      <span class="chip">⚙ Rules over tasks, bills &amp; Moodle deadlines</span>
+    </section>
+    <div class="grid g2">
+      <section class="card"><h2 class="card-title">Weekly spend · 8 wks</h2><div class="bars" data-bars="8"></div><p class="src">Transactions grouped by week. Bars here are shape only.</p></section>
+      <section class="card"><h2 class="card-title">Upcoming bills</h2><div class="rows"><div class="row-skel"></div><div class="row-skel"></div><div class="row-skel"></div></div><p class="src">Next due date is <em>computed</em> per cadence (weekly, monthly, every N days, quarterly, yearly) and clamped to month end</p></section>
+    </div>
+    <section class="card">
+      <h2 class="card-title">Morning briefing</h2>
+      <p>A push notification timed from that day's timetable and work shifts. It arrives before I leave for the hour's drive to college, with the day's classes, shifts, deadlines and bills.</p>
+      <span class="chip">⏱ Supabase edge function · pg_cron every 15 min</span>
+    </section>
+  </template>
+
+  <template id="page-tasks">
+    <h1>Tasks.</h1>
+    <p class="lede">One list for everything: college, work, car and personal.</p>
+    <section class="card"><h2 class="card-title">Quick capture</h2><div class="input-skel">Add a task…</div><p class="src">There's also a chrome-free <code>/quick-add</code> route for capturing from a phone gesture in about two seconds</p></section>
+    <section class="card"><h2 class="card-title">Tasks</h2><div class="rows check"><div class="row-skel"></div><div class="row-skel"></div><div class="row-skel"></div><div class="row-skel short"></div></div><p class="src">Grouped by due date, overdue first. Ticking one off moves it to Recently done</p></section>
+  </template>
+
+  <template id="page-work">
+    <h1>Work.</h1>
+    <p class="lede">Shifts in, pay out. It knows when money actually lands.</p>
+    <div class="grid g3">
+      <section class="card"><h2 class="card-title">Hours this week</h2><div class="fig-skel"></div><p class="src">Sum of logged shifts, Mon–Sun</p></section>
+      <section class="card"><h2 class="card-title">Incoming this Friday</h2><div class="fig-skel"></div><p class="src">Pay for the week that ended 11 days ago</p></section>
+      <section class="card"><h2 class="card-title">Next week</h2><div class="fig-skel"></div><p class="src">Rostered shifts so far</p></section>
+    </div>
+    <section class="card">
+      <h2 class="card-title">Add shift</h2>
+      <div class="form-skel"><div class="input-skel">Date</div><div class="input-skel">Start</div><div class="input-skel">End</div></div>
+      <span class="chip accent">⇄ Two-way sync with a Google Calendar "Work" calendar</span>
+      <p class="src">Each shift stores its <code>gcal_event_id</code>, so edits and deletes stay in sync both ways</p>
+    </section>
+    <section class="card"><h2 class="card-title">Pay periods</h2><div class="rows"><div class="row-skel"></div><div class="row-skel"></div><div class="row-skel"></div></div><p class="src">Work week Mon–Sun, payday the following Friday. The logic is unit-tested against a worked example.</p></section>
+  </template>
+
+  <template id="page-money">
+    <h1>Finances.</h1>
+    <p class="lede">Earned versus expected, kept separate and labelled, so I'm never spending money that hasn't arrived.</p>
+    <div class="grid g3">
+      <section class="card"><h2 class="card-title">In</h2><div class="fig-skel"></div><p class="src">Earned (paydays passed)</p></section>
+      <section class="card"><h2 class="card-title">Spent</h2><div class="fig-skel"></div><p class="src">Transactions this month</p></section>
+      <section class="card"><h2 class="card-title">Net</h2><div class="fig-skel"></div><p class="src">Earned − expenses</p></section>
+    </div>
+    <section class="card glow">
+      <h2 class="card-title">Cash runway</h2>
+      <div class="line-skel"></div>
+      <p>It projects the balance forward week by week using upcoming bills and expected pay, and marks the <strong>lowest point</strong>, the <strong>break-even</strong> hours per week, and how long the money lasts <strong>if shifts stopped</strong>.</p>
+      <span class="chip">ƒ Pure TypeScript model · Vitest-covered</span>
+    </section>
+    <div class="grid g2">
+      <section class="card"><h2 class="card-title">What if: hours per week</h2><div class="slider-skel"><span></span></div><p class="src">Drag the slider and the weekly view and runway recalculate live</p></section>
+      <section class="card"><h2 class="card-title">Spending, last 6 months</h2><div class="bars" data-bars="6"></div><p class="src">By category. Click a bar to filter transactions. Shape only.</p></section>
+    </div>
+    <div class="grid g2">
+      <section class="card"><h2 class="card-title">Bills</h2><div class="rows"><div class="row-skel"></div><div class="row-skel"></div></div><p class="src">Mark paid → rolls to the next cycle and records the expense</p></section>
+      <section class="card"><h2 class="card-title">Tax paid (from payslips)</h2><div class="rows"><div class="row-skel"></div><div class="row-skel short"></div></div><p class="src">PAYE, USC and PRSI per payslip, which feeds the tax model</p></section>
+    </div>
+  </template>
+
+  <template id="page-school">
+    <h1>School.</h1>
+    <p class="lede">Every module and deadline for the semester, without opening Moodle.</p>
+    <section class="card">
+      <h2 class="card-title">Assignments</h2>
+      <div class="rows check"><div class="row-skel"></div><div class="row-skel"></div><div class="row-skel short"></div></div>
+      <span class="chip accent">↓ Imported from Moodle's iCal feed · daily pg_cron sync</span>
+      <p class="src">"Past due, not ticked" stays pinned at the top until I deal with it</p>
+    </section>
+    <section class="card">
+      <h2 class="card-title">Modules</h2>
+      <div class="mods"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <p class="src">Each module has its own page with lecture, lab and tutorial progress, plus notes</p>
+    </section>
+    <section class="card">
+      <h2 class="card-title">Notes</h2>
+      <p>Lecture notes live in my Obsidian vault. <code>npm run sync-notes</code> pushes only the lines I've explicitly marked (exam points, "go over next") onto the right module page.</p>
+      <span class="chip">⇡ Obsidian vault → Supabase, opt-in per line</span>
+    </section>
+  </template>
+
+  <template id="page-timetable">
+    <h1>Timetable.</h1>
+    <p class="lede">The week at a glance, colour-coded by module.</p>
+    <section class="card">
+      <h2 class="card-title">Timetable</h2>
+      <div class="tt" id="tt"></div>
+      <p class="src">Class slots in <code>school_classes</code>, colour by module. The morning briefing reads this to decide when to send</p>
+    </section>
+  </template>
+
+  <template id="page-calendar">
+    <h1>Calendar.</h1>
+    <p class="lede">My Google calendars and the app's own data, layered on one month view.</p>
+    <section class="card">
+      <h2 class="card-title">Month</h2>
+      <div class="cal" id="cal"></div>
+      <div class="legend"><span class="sw school"></span>School <span class="sw work"></span>Work <span class="sw personal"></span>Personal <span class="sw projects"></span>Projects</div>
+      <span class="chip accent">⇄ Pulls from Google Calendar · two-way sync</span>
+      <p class="src">A service-account edge function bridges the Google Calendar API. Shifts made here appear in Google and the other way round</p>
+    </section>
+  </template>
+
+  <template id="page-car">
+    <h1>Car.</h1>
+    <p class="lede">Running costs and paperwork, so nothing lapses.</p>
+    <div class="grid g2">
+      <section class="card"><h2 class="card-title">Fuel log</h2><div class="rows"><div class="row-skel"></div><div class="row-skel"></div></div><p class="src">Fill-ups give efficiency and cost per km, and so the true cost of the commute</p></section>
+      <section class="card"><h2 class="card-title">Renewals &amp; legal</h2><div class="rows check"><div class="row-skel"></div><div class="row-skel"></div></div><p class="src">Tax, insurance and NCT, with countdowns</p></section>
+    </div>
+    <section class="card"><h2 class="card-title">Repairs &amp; maintenance</h2><div class="rows"><div class="row-skel"></div><div class="row-skel short"></div></div><p class="src">"Needed" versus "Done", with costs feeding into Finances</p></section>
+  </template>
+
+  <template id="page-stack">
+    <h1>Under the hood.</h1>
+    <p class="lede">How it's built.</p>
+    <div class="grid g2">
+      <section class="card"><h2 class="card-title">Front end</h2><p>React · TypeScript · Vite · Tailwind CSS v4. Mobile-first, dark by default with a light theme, and every route works one-handed on a phone.</p></section>
+      <section class="card"><h2 class="card-title">Back end</h2><p>Supabase: Postgres with row-level security, auth, edge functions (Deno) and pg_cron for scheduled syncs.</p></section>
+      <section class="card"><h2 class="card-title">Integrations</h2><p>Google Calendar (service account, two-way), Moodle iCal import, Obsidian vault note sync, web push.</p></section>
+      <section class="card"><h2 class="card-title">Testing</h2><p>Vitest over the domain logic (pay periods, bill schedules, runway, weekly view, briefing timing), kept as pure functions so they can be tested without the database.</p></section>
+    </div>
+    <section class="card"><h2 class="card-title">Design rule</h2><p>No fake data anywhere. Static placeholders from v1 were removed, not faked, and if the app doesn't know something it says so.</p></section>
+  </template>
+
+  <script>
+    const PAGES = [
+      { id: 'home', label: 'Home', primary: true, icon: '<path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/>' },
+      { id: 'tasks', label: 'Tasks', primary: true, icon: '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8 12 3 3 5-6"/>' },
+      { id: 'work', label: 'Work', primary: true, icon: '<rect x="3" y="7" width="18" height="13" rx="3"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/>' },
+      { id: 'money', label: 'Money', primary: true, icon: '<path d="M17 6a7 7 0 1 0 0 12"/><path d="M4 10.5h8M4 13.5h8"/>' },
+      { id: 'school', label: 'School' },
+      { id: 'timetable', label: 'Timetable' },
+      { id: 'calendar', label: 'Calendar' },
+      { id: 'car', label: 'Car' },
+      { id: 'stack', label: 'How it’s built' },
+    ];
+    const DOT = '<circle cx="12" cy="12" r="2.5"/>';
+    const svg = (p) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+
+    document.getElementById('sidenav').innerHTML = PAGES.map(p =>
+      `<a href="#${p.id}" data-page="${p.id}">${svg(p.icon || DOT)}${p.label}</a>`).join('');
+
+    const more = PAGES.filter(p => !p.primary);
+    document.getElementById('tabbar').innerHTML =
+      `<div class="tabs">${PAGES.filter(p => p.primary).map(p =>
+        `<a href="#${p.id}" data-page="${p.id}">${svg(p.icon)}${p.label}</a>`).join('')}
+        <button type="button" id="moreBtn">${svg('<circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/>')}More</button></div>
+      <div class="more" id="more" hidden>${more.map(p => `<a href="#${p.id}" data-page="${p.id}">${p.label}</a>`).join('')}</div>`;
+
+    const moreEl = document.getElementById('more');
+    document.getElementById('moreBtn').addEventListener('click', () => { moreEl.hidden = !moreEl.hidden; });
+
+    function render() {
+      const id = (location.hash.slice(1) || 'home');
+      const tpl = document.getElementById('page-' + id) || document.getElementById('page-home');
+      const main = document.getElementById('main');
+      main.replaceChildren(tpl.content.cloneNode(true));
+      document.querySelectorAll('[data-page]').forEach(a => a.classList.toggle('active', a.dataset.page === tpl.id.slice(5)));
+      moreEl.hidden = true;
+      fill(main);
+      window.scrollTo(0, 0);
+    }
+
+    function fill(root) {
+      // Placeholder bars: fixed, unlabelled heights. They show the chart's shape, not data.
+      const shape = [40, 65, 50, 80, 35, 70, 55, 60];
+      root.querySelectorAll('.bars').forEach(el => {
+        const n = +el.dataset.bars;
+        el.innerHTML = shape.slice(0, n).map((h, i) => `<span style="height:${h}%;animation-delay:${i * 40}ms"></span>`).join('');
+      });
+
+      const tt = root.querySelector('#tt');
+      if (tt) {
+        const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+        const slots = { Mon: [[1, 2, 1], [4, 1, 2]], Tue: [[0, 2, 3], [5, 2, 4]], Wed: [[2, 1, 5]], Thu: [[0, 1, 6], [3, 2, 1], [6, 1, 3]], Fri: [[1, 2, 2]] };
+        tt.innerHTML = days.map(d => `<div class="tt-col"><div class="kicker">${d}</div><div class="tt-body">${
+          (slots[d] || []).map(([start, len, mod]) => `<span style="top:${start * 12.5}%;height:${len * 12.5}%;--m:var(--mod-${mod})">Module ${mod}</span>`).join('')
+        }</div></div>`).join('');
+      }
+
+      const cal = root.querySelector('#cal');
+      if (cal) {
+        const cats = ['school', 'work', 'personal', 'projects'];
+        const marks = { 2: [0], 4: [1], 6: [0, 1], 9: [2], 11: [0], 13: [1], 15: [0, 3], 18: [1], 20: [0, 1], 22: [2], 25: [0], 27: [1, 3], 29: [0] };
+        let html = ['M', 'T', 'W', 'T', 'F', 'S', 'S'].map(d => `<div class="kicker cal-h">${d}</div>`).join('');
+        for (let i = 1; i <= 35; i++) {
+          const day = i - 3;
+          html += `<div class="cal-d${day < 1 || day > 31 ? ' out' : ''}"><span>${day >= 1 && day <= 31 ? day : ''}</span>${
+            (marks[day] || []).map(c => `<i class="${cats[c]}"></i>`).join('')}</div>`;
+        }
+        cal.innerHTML = html;
+      }
+    }
+
+    window.addEventListener('hashchange', render);
+    render();
+
+    const root = document.documentElement;
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      const dark = root.dataset.theme ? root.dataset.theme === 'dark' : !matchMedia('(prefers-color-scheme: light)').matches;
+      root.dataset.theme = dark ? 'light' : 'dark';
+    });
+  </script>
+</body>
+</html>
